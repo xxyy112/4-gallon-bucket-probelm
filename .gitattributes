@@ -1,2 +1,32 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+def solve_bucket_problem():
+    # Initialize the buckets
+    big_bucket = 0  # 5-gallon bucket
+    small_bucket = 0  # 3-gallon bucket
+    goal = 4  # Goal: 4 gallons in the big bucket
+    
+    # Track the steps
+    steps = []
+    
+    while big_bucket != goal:
+        if big_bucket == 0:
+            # Fill the big bucket
+            big_bucket = 5
+            steps.append("Fill the 5-gallon bucket.")
+        elif small_bucket == 3:
+            # Empty the small bucket
+            small_bucket = 0
+            steps.append("Empty the 3-gallon bucket.")
+        else:
+            # Pour from the big bucket into the small bucket
+            transfer = min(big_bucket, 3 - small_bucket)
+            big_bucket -= transfer
+            small_bucket += transfer
+            steps.append(f"Pour {transfer} gallons from the 5-gallon bucket into the 3-gallon bucket.")
+    
+    # Display the steps
+    print("Steps to solve the 4-gallon bucket problem:")
+    for step in steps:
+        print(step)
+
+# Run the function
+solve_bucket_problem()
